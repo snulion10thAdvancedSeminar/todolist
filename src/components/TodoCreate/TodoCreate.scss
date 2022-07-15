@@ -1,0 +1,66 @@
+.insert-form-positioner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.insert-form {
+  background: #f8f9fa;
+  padding: 32px;
+  padding-bottom: 72px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  outline: none;
+}
+
+.circle-button {
+  display: block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  transform: translate(-50%, 50%);
+  transition: 0.125s all ease-in;
+  background: #38d9a9;
+  z-index: 5;
+  cursor: pointer;
+
+  &:hover {
+    background: #63e6be;
+  }
+
+  &:active {
+    background: #20c997;
+  }
+}
+
+.button-open {
+  background: #ff6b6b;
+  &:hover {
+    background: #ff8787;
+  }
+  &:active {
+    background: #fa5252;
+  }
+  transform: translate(-50%, 50%) rotate(45deg);
+}
