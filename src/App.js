@@ -6,12 +6,14 @@ import TodoList from './components/TodoList';
 import TodoCreate from './components/TodoCreate';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    { id: 1, text: '세미나 잘 듣기', done: false },
+  ]);
   return (
     <>
       <TodoTemplate>
         <TodoHead todos={todos} />
-        <TodoList />
+        <TodoList todos={todos} />
         <TodoCreate />
       </TodoTemplate>
     </>
