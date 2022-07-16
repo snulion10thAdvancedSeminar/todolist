@@ -1,7 +1,7 @@
 import './TodoList.scss';
 import TodoItem from '../TodoItem';
 
-function TodoList({ todos }) {
+function TodoList({ todos, onToggle, onRemove }) {
   return (
     <div className="list-container">
       {todos.map((todo) => (
@@ -10,6 +10,8 @@ function TodoList({ todos }) {
           id={todo.id}
           text={todo.text}
           done={todo.done}
+          onToggle={onToggle}
+          onRemove={onRemove}
         />
       ))}
     </div>
