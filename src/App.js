@@ -6,6 +6,7 @@ import TodoList from './components/TodoList';
 import TodoCreate from './components/TodoCreate';
 
 function App() {
+  const [nextId, setNextId] = useState(2);
   const [todos, setTodos] = useState([
     { id: 1, text: '세미나 잘 듣기', done: false },
   ]);
@@ -19,7 +20,10 @@ function App() {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
-  const onCreate = (todo) => setTodos({ ...todos, todo });
+  const onCreate = (text) => {
+    setTodos([...todos, { id: nextId, text, done: false }]);
+    setNextId(nextId + 1);
+  };
 
   return (
     <>
