@@ -1,7 +1,7 @@
 import './TodoHead.scss';
 
 function TodoHead({ todos }) {
-  const undoneTasks = todos.filter((todo) => !todo.undone);
+  const undoneTasks = todos.filter((todo) => !todo.done);
   const today = new Date();
   const dateString = today.toLocaleDateString('ko-KR', {
     year: 'numeric',
