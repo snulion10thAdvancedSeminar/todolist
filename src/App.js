@@ -21,7 +21,8 @@ function App() {
     setTodos(newTodos);
   };
   const onCreate = (text) => {
-    setTodos([...todos, { id: nextId, text, done: false }]);
+    const newTodos = [...todos, { id: nextId, text, done: false }];
+    setTodos(newTodos);
     setNextId(nextId + 1);
   };
 
