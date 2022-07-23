@@ -17,9 +17,27 @@ function SignIn({ onChangeScreen }) {
   };
 
   const onSubmit = (e) => {
+    if (!isSubmitAvailable()) {
+      return false;
+    }
+
     // TODO: 로그인 로직 추가 필요
     window.sessionStorage.setItem('isAuthenticated', 'true');
     setFormData({ email: '', password: '' });
+    return true;
+  }
+
+  const isSubmitAvailable = () => {
+    const {
+      email,
+      password
+    } = formData;
+
+    if (!email || !password) {
+      alert('모든 항목을 채워주세요');
+      return false;
+    }
+
     return true;
   }
 
