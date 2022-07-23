@@ -8,7 +8,9 @@ function TodoCreate({ onCreate }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onCreate(text);
+    if (text.trim()) {
+      onCreate(text);
+    }
     setText('');
     setOpen(false);
   };
