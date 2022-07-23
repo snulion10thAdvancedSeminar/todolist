@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { MdDone, MdDelete } from 'react-icons/md';
 import './TodoItem.scss';
 
-function TodoItem({ id, done, text, onToggle, onRemove }) {
+function TodoItem({ todo, onToggle, onRemove }) {
+  const { id, text, done } = todo;
   const [isShowRemove, setIsShowRemove] = useState(false);
 
   return (
