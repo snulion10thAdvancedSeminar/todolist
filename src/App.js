@@ -26,13 +26,11 @@ function App() {
   };
 
   return (
-    <>
-      <TodoTemplate>
-        <TodoHead todos={todos} />
-        <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
-        <TodoCreate onCreate={onCreate} />
-      </TodoTemplate>
-    </>
+    <TodoTemplate>
+      <TodoHead todos={todos} />
+      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+      <TodoCreate onCreate={onCreate} />
+    </TodoTemplate>
   );
 }
 
