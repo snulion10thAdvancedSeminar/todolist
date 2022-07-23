@@ -3,7 +3,7 @@ import './SignIn.scss';
 
 function SignIn({ onChangeScreen }) {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
@@ -23,17 +23,17 @@ function SignIn({ onChangeScreen }) {
 
     // TODO: 로그인 로직 추가 필요
     window.sessionStorage.setItem('isAuthenticated', 'true');
-    setFormData({ email: '', password: '' });
+    setFormData({ username: '', password: '' });
     return true;
   }
 
   const isSubmitAvailable = () => {
     const {
-      email,
+      username,
       password
     } = formData;
 
-    if (!email || !password) {
+    if (!username || !password) {
       alert('모든 항목을 채워주세요');
       return false;
     }
@@ -50,11 +50,11 @@ function SignIn({ onChangeScreen }) {
         <input
           autoFocus
           type="text"
-          id="email"
-          name="email"
-          value={formData.email}
+          id="username"
+          name="username"
+          value={formData.username}
           onChange={onChangeFormData}
-          placeholder="이메일"
+          placeholder="아이디"
         />
         <input
           type="password"

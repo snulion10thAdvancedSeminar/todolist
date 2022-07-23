@@ -3,7 +3,7 @@ import './SignUp.scss';
 
 function SignUp({ onChangeScreen }) {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
     passwordCheck: '',
   });
@@ -18,7 +18,7 @@ function SignUp({ onChangeScreen }) {
     // TODO: 서버로 회원가입 요청하는 로직 작성
 
     setFormData({
-      email: '',
+      username: '',
       password: '',
       passwordCheck: '',
     });
@@ -27,12 +27,12 @@ function SignUp({ onChangeScreen }) {
 
   const isSubmitAvailable = () => {
     const {
-      email,
+      username,
       password,
       passwordCheck
     } = formData;
 
-    if (!email || !password || !passwordCheck) {
+    if (!username || !password || !passwordCheck) {
       alert('모든 항목을 채워주세요');
       return false;
     }
@@ -66,15 +66,15 @@ function SignUp({ onChangeScreen }) {
       </div>
       <form className="sign-up-form" onSubmit={onSubmit}>
         <label>
-          이메일
+          아이디
           <input
             autoFocus
             type="text"
-            id="email"
-            name="email"
-            value={formData.email}
+            id="username"
+            name="username"
+            value={formData.username}
             onChange={onChangeFormData}
-            placeholder="이메일"
+            placeholder="아이디"
           />
         </label>
 
