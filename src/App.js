@@ -12,7 +12,7 @@ function App() {
   ]);
   const onToggle = (id) => {
     const newTodos = todos.map((todo) =>
-      todo.id === id ? { id: todo.id, text: todo.text, done: !todo.done } : todo
+      todo.id === id ? { ...todo, done: !todo.done } : todo
     );
     setTodos(newTodos);
   };
