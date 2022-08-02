@@ -1,4 +1,5 @@
 import { useState } from 'react';
+//editIcon 추가
 import { MdDone, MdDelete, MdEdit } from 'react-icons/md';
 import './TodoItem.scss';
 
@@ -6,8 +7,13 @@ function TodoItem({ todo, onToggle, onUpdate, onRemove }) {
   const { id, text, done } = todo;
   //todo text 수정 위한 editIcon 추가되면서 isRemoveIconVisible의 변수명을 아래와 같이 바꿈
   const [isIconVisible, setIsIconVisible] = useState(false);
+
+  //edit icon 클릭시 div -> input으로 변경
   const [isTodoEditable, setIsTodoEditable] = useState(false);
+  //todo text
   const [todoText, setTodoText] = useState(text);
+
+  // input change 및 submit
   const onChangeText = (e) => {
     setTodoText(e.target.value);
   };

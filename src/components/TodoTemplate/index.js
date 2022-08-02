@@ -6,13 +6,17 @@ import TodoCreate from '../TodoCreate';
 import axios from "axios";
 
 function TodoTemplate() {
+  //2주차 dummy data 제거
   const [todos, setTodos] = useState([]);
+
+  //todos get
   useEffect(() => {
     axios.get("/api/todos").then((res) => {
       setTodos(res.data.todos);
     });
   }, []);
 
+  //todo toggle
   const onToggle = (id) => {
     axios
       .patch(`/api/todos/${id}/check/`)
@@ -25,6 +29,7 @@ function TodoTemplate() {
       .catch((err) => console.log(err));
   };
 
+  //todo update(2주차 심화과제)
   const onUpdate = (id, text) => {
     const newText = { text: text };
     axios
@@ -38,6 +43,7 @@ function TodoTemplate() {
       .catch((err) => console.log(err));
   };
 
+  //todo delete
   const onRemove = (id) => {
     axios
       .delete(`/api/todos/${id}/`)
@@ -47,6 +53,8 @@ function TodoTemplate() {
       })
       .catch((err) => console.log(err));
   };
+
+  //todo post
   const onCreate = (text) => {
     const newTodo = { text };
     axios
