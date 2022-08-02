@@ -39,8 +39,13 @@ function TodoTemplate() {
   };
 
   const onRemove = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    axios
+      .delete(`/api/todos/${id}/`)
+      .then(() => {
+        const newTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
   };
   const onCreate = (text) => {
     const newTodos = [...todos, { id: nextId, text, done: false }];
