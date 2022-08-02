@@ -48,15 +48,24 @@ function TodoTemplate() {
       .catch((err) => console.log(err));
   };
   const onCreate = (text) => {
-    const newTodos = [...todos, { id: nextId, text, done: false }];
-    setTodos(newTodos);
-    setNextId(nextId + 1);
+    const newTodo = { text };
+    axios
+      .post("/api/todos/create/", newTodo)
+      .then((res) => {
+        setTodos([...todos, res.data.todo]);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="template-container">
       <TodoHead todos={todos} />
-      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+      <TodoList
+        todos={todos}
+        onToggle={onToggle}
+        onUpdate={onUpdate}
+        onRemove={onRemove}
+      />
       <TodoCreate onCreate={onCreate} />
     </div>
   );
