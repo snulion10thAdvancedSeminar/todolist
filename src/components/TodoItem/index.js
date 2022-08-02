@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MdDone, MdDelete } from 'react-icons/md';
+import { MdDone, MdDelete, MdEdit } from 'react-icons/md';
 import './TodoItem.scss';
 
 function TodoItem({ todo, onToggle, onRemove }) {
