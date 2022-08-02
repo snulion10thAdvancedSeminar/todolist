@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './TodoTemplate.scss';
 import TodoHead from '../TodoHead';
 import TodoList from '../TodoList';
 import TodoCreate from '../TodoCreate';
+import axios from "axios";
 
 function TodoTemplate() {
-  const [nextId, setNextId] = useState(2);
-  const [todos, setTodos] = useState([
-    { id: 1, text: '세미나 잘 듣기', done: false },
-  ]);
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    axios.get("/api/todos").then((res) => {
+      setTodos(res.data.todos);
+    });
+  }, []);
+
   const onToggle = (id) => {
     const newTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, done: !todo.done } : todo
