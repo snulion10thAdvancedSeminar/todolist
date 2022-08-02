@@ -24,6 +24,20 @@ function TodoTemplate() {
       })
       .catch((err) => console.log(err));
   };
+
+  const onUpdate = (id, text) => {
+    const newText = { text: text };
+    axios
+      .patch(`/api/todos/${id}/`, newText)
+      .then(() => {
+        const newTodos = todos.map((todo) =>
+          todo.id === id ? { ...todo, text: text } : todo
+        );
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const onRemove = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
