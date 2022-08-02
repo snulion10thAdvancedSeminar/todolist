@@ -14,10 +14,15 @@ function TodoTemplate() {
   }, []);
 
   const onToggle = (id) => {
-    const newTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, done: !todo.done } : todo
-    );
-    setTodos(newTodos);
+    axios
+      .patch(`/api/todos/${id}/check/`)
+      .then(() => {
+        const newTodos = todos.map((todo) =>
+          todo.id === id ? { ...todo, done: !todo.done } : todo
+        );
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
   };
   const onRemove = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
