@@ -11,9 +11,12 @@ function TodoTemplate() {
 
   //todos get
   useEffect(() => {
-    axios.get("/api/todos").then((res) => {
-      setTodos(res.data.todos);
-    });
+    axios
+      .get("/api/todos")
+      .then((res) => {
+        setTodos(res.data.todos);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   //todo toggle
