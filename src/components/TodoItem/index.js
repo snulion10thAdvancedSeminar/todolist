@@ -38,7 +38,7 @@ function TodoItem({ todo, onToggle, onUpdate, onRemove }) {
       <div className={done ? 'text text-done' : 'text'}>
         {isTodoEditable ? (
           <form onSubmit={onSubmitTextUpdatedTodo}>
-            <input defaultValue={text} onChange={onChangeText} />
+            <input value={todoText} onChange={onChangeText} />
           </form>
         ) : (
           text
