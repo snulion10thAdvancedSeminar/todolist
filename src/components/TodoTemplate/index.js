@@ -34,9 +34,8 @@ function TodoTemplate() {
 
   //todo update(2주차 심화과제)
   const onUpdate = (id, text) => {
-    const newText = { text: text };
     axios
-      .patch(`/api/todos/${id}/`, newText)
+      .patch(`/api/todos/${id}/`, {text})
       .then(() => {
         const newTodos = todos.map((todo) =>
           todo.id === id ? { ...todo, text: text } : todo
