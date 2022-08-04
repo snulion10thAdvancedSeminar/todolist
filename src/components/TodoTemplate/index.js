@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import './TodoTemplate.scss';
-import TodoHead from '../TodoHead';
-import TodoList from '../TodoList';
-import TodoCreate from '../TodoCreate';
+import { useState, useEffect } from "react";
+import "./TodoTemplate.scss";
+import TodoHead from "../TodoHead";
+import TodoList from "../TodoList";
+import TodoCreate from "../TodoCreate";
 import axios from "axios";
 
 function TodoTemplate() {

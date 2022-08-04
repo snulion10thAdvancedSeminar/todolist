@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 //editIcon 추가
-import { MdDone, MdDelete, MdEdit } from 'react-icons/md';
-import './TodoItem.scss';
+import { MdDone, MdDelete, MdEdit } from "react-icons/md";
+import "./TodoItem.scss";
 
 function TodoItem({ todo, onToggle, onUpdate, onRemove }) {
   const { id, text, done } = todo;
@@ -30,12 +30,12 @@ function TodoItem({ todo, onToggle, onUpdate, onRemove }) {
       onMouseLeave={() => setIsIconVisible(false)}
     >
       <div
-        className={done ? 'check-circle circle-done' : 'check-circle'}
+        className={done ? "check-circle circle-done" : "check-circle"}
         onClick={() => onToggle(id)}
       >
         {done && <MdDone />}
       </div>
-      <div className={done ? 'text text-done' : 'text'}>
+      <div className={done ? "text text-done" : "text"}>
         {isTodoEditable ? (
           <form onSubmit={onSubmitTextUpdatedTodo}>
             <input value={todoText} onChange={onChangeText} />

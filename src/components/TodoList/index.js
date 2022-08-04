@@ -1,5 +1,5 @@
-import './TodoList.scss';
-import TodoItem from '../TodoItem';
+import "./TodoList.scss";
+import TodoItem from "../TodoItem";
 
 function TodoList({ todos, onToggle, onUpdate, onRemove }) {
   return (
@@ -9,7 +9,7 @@ function TodoList({ todos, onToggle, onUpdate, onRemove }) {
           key={todo.id}
           todo={todo}
           onToggle={onToggle}
-          onUpdate = {onUpdate}
+          onUpdate={onUpdate}
           onRemove={onRemove}
         />
       ))}
