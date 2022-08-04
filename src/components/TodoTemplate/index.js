@@ -1,34 +1,81 @@
-import { useState } from 'react';
-import './TodoTemplate.scss';
-import TodoHead from '../TodoHead';
-import TodoList from '../TodoList';
-import TodoCreate from '../TodoCreate';
+import { useState, useEffect } from "react";
+import "./TodoTemplate.scss";
+import TodoHead from "../TodoHead";
+import TodoList from "../TodoList";
+import TodoCreate from "../TodoCreate";
+import axios from "axios";
 
 function TodoTemplate() {
-  const [nextId, setNextId] = useState(2);
-  const [todos, setTodos] = useState([
-    { id: 1, text: '세미나 잘 듣기', done: false },
-  ]);
+  //2주차 dummy data 제거
+  const [todos, setTodos] = useState([]);
+
+  //todos get
+  useEffect(() => {
+    axios
+      .get("/api/todos")
+      .then((res) => {
+        setTodos(res.data.todos);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //todo toggle
   const onToggle = (id) => {
-    const newTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, done: !todo.done } : todo
-    );
-    setTodos(newTodos);
+    axios
+      .patch(`/api/todos/${id}/check/`)
+      .then(() => {
+        const newTodos = todos.map((todo) =>
+          todo.id === id ? { ...todo, done: !todo.done } : todo
+        );
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
   };
+
+  //todo update(2주차 심화과제)
+  const onUpdate = (id, text) => {
+    axios
+      .patch(`/api/todos/${id}/`, {text})
+      .then(() => {
+        const newTodos = todos.map((todo) =>
+          todo.id === id ? { ...todo, text: text } : todo
+        );
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //todo delete
   const onRemove = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    axios
+      .delete(`/api/todos/${id}/`)
+      .then(() => {
+        const newTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(newTodos);
+      })
+      .catch((err) => console.log(err));
   };
+
+  //todo post
   const onCreate = (text) => {
-    const newTodos = [...todos, { id: nextId, text, done: false }];
-    setTodos(newTodos);
-    setNextId(nextId + 1);
+    const newTodo = { text };
+    axios
+      .post("/api/todos/create/", newTodo)
+      .then((res) => {
+        setTodos([...todos, res.data.todo]);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="template-container">
       <TodoHead todos={todos} />
-      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
+      <TodoList
+        todos={todos}
+        onToggle={onToggle}
+        onUpdate={onUpdate}
+        onRemove={onRemove}
+      />
       <TodoCreate onCreate={onCreate} />
     </div>
   );

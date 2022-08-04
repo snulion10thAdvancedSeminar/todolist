@@ -1,14 +1,14 @@
-import './TodoHead.scss';
+import "./TodoHead.scss";
 
 function TodoHead({ todos }) {
   const undoneTodos = todos.filter((todo) => !todo.done);
   const today = new Date();
-  const dateString = today.toLocaleDateString('ko-KR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const dateString = today.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
-  const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
 
   return (
     <div className="head-container">
