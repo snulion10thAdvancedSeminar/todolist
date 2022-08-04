@@ -26,7 +26,7 @@ function TodoItem({ todo, onToggle, onUpdate, onRemove }) {
   return (
     <div
       className="item-block"
-      onMouseOver={() => setIsIconVisible(true)}
+      onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
     >
       <div
