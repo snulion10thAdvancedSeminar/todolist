@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signIn } from '../../api/auth';
 import './SignIn.scss';
 
 function SignIn({ onChangeScreen }) {
@@ -17,13 +18,14 @@ function SignIn({ onChangeScreen }) {
   };
 
   const onSubmit = (e) => {
+    e.preventDefault();
+
     if (!isSubmitAvailable()) {
       return false;
     }
 
-    // TODO: 로그인 로직 추가 필요
-    window.sessionStorage.setItem('isAuthenticated', 'true');
-    setFormData({ username: '', password: '' });
+    signIn(formData);
+
     return true;
   }
 
