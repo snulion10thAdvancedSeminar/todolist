@@ -67,3 +67,16 @@ export const signUp = ({
     });
 };
 
+export const signOut = () => {
+  axios
+    .post("api/accounts/logout/", {
+      refresh: window.sessionStorage.getItem("refreshToken"),
+    })
+    .then((res) => {
+      sessionStorage.clear();
+      window.location.reload();
+    })
+    .catch((err) => {
+      // 에러 처리
+    });
+};

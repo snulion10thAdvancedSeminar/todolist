@@ -1,3 +1,4 @@
+import { signOut } from "../../api/auth";
 import "./TodoHead.scss";
 
 function TodoHead({ todos }) {
@@ -10,19 +11,13 @@ function TodoHead({ todos }) {
   });
   const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
 
-  const onClickSignOut = () => {
-    // TODO: 로그아웃 로직 작성
-    window.sessionStorage.removeItem('isAuthenticated');
-    window.location.reload();
-  }
-
   return (
     <div className="head-container">
       <h1>{dateString}</h1>
       <div className="day">{dayName}</div>
       <div className="info-bar">
         <div className="todos-left">할 일 {undoneTodos.length}개 남음</div>
-        <div onClick={onClickSignOut}>로그아웃</div>
+        <div onClick={signOut}>로그아웃</div>
       </div>
     </div>
   );
