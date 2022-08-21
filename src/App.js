@@ -12,9 +12,9 @@ function App() {
   // TODO: 적절한 인증값 받아오는 로직 작성
   if (window.sessionStorage.getItem('refreshToken')) {
     return <TodoTemplate />;
-  } else {
-    return <AuthTemplate />;
   }
+  
+  return <AuthTemplate />;
 }
 
 export default App;
