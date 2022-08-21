@@ -30,12 +30,12 @@ function SignUp({ onChangeScreen }) {
       passwordCheck
     } = formData;
 
-    if (!username || !password || !passwordCheck) {
+    if (!username.trim() || !password.trim() || !passwordCheck.trim()) {
       alert('모든 항목을 채워주세요');
       return false;
     }
 
-    if (username.length < 4) {
+    if (username.trim().length < 4) {
       alert('4자 이상의 아이디를 설정해주세요')
     }
 
@@ -44,7 +44,7 @@ function SignUp({ onChangeScreen }) {
       return false;
     }
 
-    if (password.length < 8) {
+    if (password.trim().length < 8) {
       alert('6자리 이상의 비밀번호를 설정해주세요');
       return false;
     }

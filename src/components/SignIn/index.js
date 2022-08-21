@@ -35,7 +35,7 @@ function SignIn({ onChangeScreen }) {
       password
     } = formData;
 
-    if (!username || !password) {
+    if (!username.trim() || !password.trim()) {
       alert('모든 항목을 채워주세요');
       return false;
     }
