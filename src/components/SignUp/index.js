@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signUp } from '../../api/auth';
 import './SignUp.scss';
 
 function SignUp({ onChangeScreen }) {
@@ -9,19 +10,16 @@ function SignUp({ onChangeScreen }) {
   });
 
   const onSubmit = (e) => {
+    e.preventDefault();
+
     if (!isSubmitAvailable()) {
-      e.preventDefault();
       return false;
     }
 
-    window.sessionStorage.setItem('isAuthenticated', true);
-    // TODO: 서버로 회원가입 요청하는 로직 작성
+    const { username, password } = formData;
 
-    setFormData({
-      username: '',
-      password: '',
-      passwordCheck: '',
-    });
+    signUp({ username, password });
+    
     return true;
   }
 
