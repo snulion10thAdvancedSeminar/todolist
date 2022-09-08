@@ -18,9 +18,20 @@ function SignUp({ onChangeScreen }) {
 
     const { username, password } = formData;
 
+    if (!isValidate()) {
+      alert('아이디는 영문과 숫자로만 입력해주세요');
+      return;
+    }
+
     signUp({ username, password });
     
     return true;
+  }
+
+  const isValidate = () => {
+    const regex = /^[a-z0-9]+$/i;
+
+    return regex.test(formData.username);
   }
 
   const isSubmitAvailable = () => {
