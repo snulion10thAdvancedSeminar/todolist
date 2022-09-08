@@ -14,10 +14,16 @@
     color: #868e96;
     font-size: 21px;
   }
+  .info-bar {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
   .todos-left {
     color: #20c997;
     font-size: 18px;
-    margin-top: 40px;
     font-weight: bold;
   }
 }
