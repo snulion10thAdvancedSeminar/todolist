@@ -49,13 +49,11 @@ export const silentRefresh = () => {
 }
 
 export const signUp = ({
-  email = "",
   username,
   password,
 }) => {
   axios
     .post("api/accounts/signup/", {
-      email: `${username}@naver.com`,
       username,
       password,
     })
